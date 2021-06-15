@@ -1,0 +1,1365 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Endpoints &#8212; Tipsi 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/custom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Structs" href="dyn_serializers.html" />
+    <link rel="prev" title="For API clients" href="api_examples.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="dyn_serializers.html" title="Structs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api_examples.html" title="For API clients"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="endpoints">
+<span id="id1"></span><h1>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="login">
+<h2>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-login-login-endpoint">
+<h3>/api/rest/v001/login/ - Login endpoint<a class="headerlink" href="#api-rest-v001-login-login-endpoint" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-rest-v001-login-">
+<code class="descname">POST </code><code class="descname">/api/rest/v001/login/</code><a class="headerlink" href="#post--api-rest-v001-login-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an authenticated session for user. This session is required for using private API.
+If response status code is 200, user is logged in successfully.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>email</strong> (<em>string</em>) – User email</li>
+<li><strong>password</strong> (<em>string</em>) – User password</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/api/rest/v001/login/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;password&#39;</span><span class="o">:</span> <span class="s1">&#39;SeCrEt&#39;</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="o">:</span> <span class="s1">&#39;staff_user@gettipsi.com&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="store-operations">
+<span id="endpoints-store"></span><h2>Store operations<a class="headerlink" href="#store-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-store-store-id-store-endpoint">
+<h3>/api/rest/v001/store/[&lt;store_id&gt;/] - Store endpoint<a class="headerlink" href="#api-rest-v001-store-store-id-store-endpoint" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-rest-v001-store-">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/store/</code><a class="headerlink" href="#get--api-rest-v001-store-" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of stores</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>store_fields</strong> – <em>(str list)</em> List of requested store fields from <a class="reference internal" href="dyn_serializers.html#storeserializerintegration"><span class="std std-ref">StoreSerializerIntegration</span></a></li>
+<li><strong>group_id</strong> – <em>(int)</em> Filter stores by group_id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/api/rest/v001/store/?store_fields=id,name,retail_group&amp;retail_group_fields=id,name&amp;group_id=845</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;count&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;next&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+ <span class="s1">&#39;previous&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+ <span class="s1">&#39;results&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1846</span><span class="p">,</span>
+              <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;New Store Name&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;retail_group&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">844</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Tipsi&#39;</span><span class="p">},</span>
+                               <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">845</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Tipsi&#39;</span><span class="p">}]}]}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-rest-v001-store-(int-store_id)-">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#get--api-rest-v001-store-(int-store_id)-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get only one store</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>store_fields</strong> – <em>(str list)</em> List of requested store fields from <a class="reference internal" href="dyn_serializers.html#storeserializerintegration"><span class="std std-ref">StoreSerializerIntegration</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/api/rest/v001/store/1846/?store_fields=id,name,working_hours,delivery_zones,location,orders_enabled</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;delivery_zones&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where wines are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Wet&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.4131927</span><span class="p">,</span> <span class="mf">41.8547734</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4350295</span><span class="p">,</span> <span class="mf">41.81022</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.358274</span><span class="p">,</span> <span class="mf">41.8122032</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3425198</span><span class="p">,</span> <span class="mf">41.8447569</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4133644</span><span class="p">,</span> <span class="mf">41.8546029</span><span class="p">]],</span>
+                                  <span class="p">[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3341084</span><span class="p">,</span> <span class="mf">41.8612513</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]},</span>
+                    <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where only beers or &#39;</span>
+                                    <span class="s1">&#39;non-alcohol products are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Dry&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3378849</span><span class="p">,</span> <span class="mf">41.87314</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]}],</span>
+ <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1846</span><span class="p">,</span>
+ <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="o">:</span> <span class="mf">41.7</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="o">:</span> <span class="o">-</span><span class="mf">71.5</span><span class="p">},</span>
+ <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;store1&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;orders_enabled&#39;</span><span class="o">:</span> <span class="nx">False</span><span class="p">,</span>
+ <span class="s1">&#39;working_hours&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;holidays&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;2018-10-04&#39;</span><span class="o">:</span> <span class="p">[],</span>
+                                <span class="s1">&#39;2018-10-26&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;schedule&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;fri&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;mon&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sat&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sun&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;10:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;thu&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00PM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;2:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;tue&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;1:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00AM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;wed&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;12:00AM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;1:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;3:00AM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;time_zone&#39;</span><span class="o">:</span> <span class="s1">&#39;America/New_York&#39;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="patch">
+<dt id="patch--api-rest-v001-store-(int-store_id)-">
+<code class="descname">PATCH </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#patch--api-rest-v001-store-(int-store_id)-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update store info</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>{}</strong> – fields from <a class="reference internal" href="dyn_serializers.html#storeserializerintegration"><span class="std std-ref">StoreSerializerIntegration</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">PATCH</span> <span class="nn">/api/rest/v001/store/1846/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;address&#39;</span><span class="o">:</span> <span class="s1">&#39;Some address&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;city&#39;</span><span class="o">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;delivery_zones&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where wines are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Wet&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.4131927</span><span class="p">,</span> <span class="mf">41.8547734</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4350295</span><span class="p">,</span> <span class="mf">41.81022</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.358274</span><span class="p">,</span> <span class="mf">41.8122032</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3425198</span><span class="p">,</span> <span class="mf">41.8447569</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4133644</span><span class="p">,</span> <span class="mf">41.8546029</span><span class="p">]],</span>
+                                  <span class="p">[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3341084</span><span class="p">,</span> <span class="mf">41.8612513</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]},</span>
+                    <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where only beers or &#39;</span>
+                                    <span class="s1">&#39;non-alcohol products are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Dry&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3378849</span><span class="p">,</span> <span class="mf">41.87314</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]}],</span>
+ <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="o">:</span> <span class="mf">41.7</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="o">:</span> <span class="o">-</span><span class="mf">71.5</span><span class="p">},</span>
+ <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;New Store Name&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;orders_enabled&#39;</span><span class="o">:</span> <span class="nx">True</span><span class="p">,</span>
+ <span class="s1">&#39;phone_number&#39;</span><span class="o">:</span> <span class="s1">&#39;+1000000000&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;postcode&#39;</span><span class="o">:</span> <span class="s1">&#39;10001&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;working_hours&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;holidays&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;2018-10-04&#39;</span><span class="o">:</span> <span class="p">[],</span>
+                                <span class="s1">&#39;2018-10-26&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;schedule&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;fri&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;mon&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sat&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sun&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;10:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;thu&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00PM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;2:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;tue&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;1:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00AM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;wed&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;12:00AM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;1:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;3:00AM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;time_zone&#39;</span><span class="o">:</span> <span class="s1">&#39;America/New_York&#39;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;address&#39;</span><span class="o">:</span> <span class="s1">&#39;Some address&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;city&#39;</span><span class="o">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;delivery_zones&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where wines are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Wet&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.4131927</span><span class="p">,</span> <span class="mf">41.8547734</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4350295</span><span class="p">,</span> <span class="mf">41.81022</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.358274</span><span class="p">,</span> <span class="mf">41.8122032</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3425198</span><span class="p">,</span> <span class="mf">41.8447569</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4133644</span><span class="p">,</span> <span class="mf">41.8546029</span><span class="p">]],</span>
+                                  <span class="p">[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3341084</span><span class="p">,</span> <span class="mf">41.8612513</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]},</span>
+                    <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where only beers or &#39;</span>
+                                    <span class="s1">&#39;non-alcohol products are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Dry&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3378849</span><span class="p">,</span> <span class="mf">41.87314</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]}],</span>
+ <span class="s1">&#39;external_id&#39;</span><span class="o">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1846</span><span class="p">,</span>
+ <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="o">:</span> <span class="mf">41.7</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="o">:</span> <span class="o">-</span><span class="mf">71.5</span><span class="p">},</span>
+ <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;New Store Name&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;orders_enabled&#39;</span><span class="o">:</span> <span class="nx">True</span><span class="p">,</span>
+ <span class="s1">&#39;phone_number&#39;</span><span class="o">:</span> <span class="s1">&#39;+1000000000&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;postcode&#39;</span><span class="o">:</span> <span class="s1">&#39;10001&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;retail_group&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">844</span><span class="p">,</span>
+                   <span class="s1">&#39;internal_note&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;logo_url&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Tipsi&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;shortcut&#39;</span><span class="o">:</span> <span class="s1">&#39;group1&#39;</span><span class="p">},</span>
+                  <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">845</span><span class="p">,</span>
+                   <span class="s1">&#39;internal_note&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;logo_url&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Tipsi&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;shortcut&#39;</span><span class="o">:</span> <span class="s1">&#39;group2&#39;</span><span class="p">}],</span>
+ <span class="s1">&#39;website&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+ <span class="s1">&#39;working_hours&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;holidays&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;2018-10-04&#39;</span><span class="o">:</span> <span class="p">[],</span>
+                                <span class="s1">&#39;2018-10-26&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;schedule&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;fri&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;mon&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sat&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sun&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;10:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;thu&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00PM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;2:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;tue&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;1:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00AM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;wed&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;12:00AM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;1:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;3:00AM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;time_zone&#39;</span><span class="o">:</span> <span class="s1">&#39;America/New_York&#39;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">PATCH</span> <span class="nn">/api/rest/v001/store/1846/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;address&#39;</span><span class="o">:</span> <span class="s1">&#39;Some address&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;city&#39;</span><span class="o">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;delivery_zones&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where wines are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Wet&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.4131927</span><span class="p">,</span> <span class="mf">41.8547734</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4350295</span><span class="p">,</span> <span class="mf">41.81022</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.358274</span><span class="p">,</span> <span class="mf">41.8122032</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3425198</span><span class="p">,</span> <span class="mf">41.8447569</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4133644</span><span class="p">,</span> <span class="mf">41.8546029</span><span class="p">]],</span>
+                                  <span class="p">[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3341084</span><span class="p">,</span> <span class="mf">41.8612513</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]},</span>
+                    <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where only beers or &#39;</span>
+                                    <span class="s1">&#39;non-alcohol products are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Dry&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3378849</span><span class="p">,</span> <span class="mf">41.87314</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]}],</span>
+ <span class="s1">&#39;external_id&#39;</span><span class="o">:</span> <span class="s1">&#39;314abc&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="o">:</span> <span class="mf">41.7</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="o">:</span> <span class="o">-</span><span class="mf">71.5</span><span class="p">},</span>
+ <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;New Store Name&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;phone_number&#39;</span><span class="o">:</span> <span class="s1">&#39;+1000000000&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;postcode&#39;</span><span class="o">:</span> <span class="s1">&#39;10001&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;working_hours&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;holidays&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;2018-10-04&#39;</span><span class="o">:</span> <span class="p">[],</span>
+                                <span class="s1">&#39;2018-10-26&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;schedule&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;fri&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;mon&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sat&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sun&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;10:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;thu&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00PM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;2:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;tue&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;1:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00AM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;wed&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;12:00AM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;1:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;3:00AM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;time_zone&#39;</span><span class="o">:</span> <span class="s1">&#39;America/New_York&#39;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;address&#39;</span><span class="o">:</span> <span class="s1">&#39;Some address&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;city&#39;</span><span class="o">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;delivery_zones&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where wines are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Wet&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.4131927</span><span class="p">,</span> <span class="mf">41.8547734</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4350295</span><span class="p">,</span> <span class="mf">41.81022</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.358274</span><span class="p">,</span> <span class="mf">41.8122032</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3425198</span><span class="p">,</span> <span class="mf">41.8447569</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.4133644</span><span class="p">,</span> <span class="mf">41.8546029</span><span class="p">]],</span>
+                                  <span class="p">[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3341084</span><span class="p">,</span> <span class="mf">41.8612513</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]},</span>
+                    <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;Delivery zone, where only beers or &#39;</span>
+                                    <span class="s1">&#39;non-alcohol products are allowed&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Dry&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;polygons&#39;</span><span class="o">:</span> <span class="p">[[[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3378849</span><span class="p">,</span> <span class="mf">41.87314</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">]]]}],</span>
+ <span class="s1">&#39;external_id&#39;</span><span class="o">:</span> <span class="s1">&#39;314abc&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1846</span><span class="p">,</span>
+ <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="o">:</span> <span class="mf">41.7</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="o">:</span> <span class="o">-</span><span class="mf">71.5</span><span class="p">},</span>
+ <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;New Store Name&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;orders_enabled&#39;</span><span class="o">:</span> <span class="nx">True</span><span class="p">,</span>
+ <span class="s1">&#39;phone_number&#39;</span><span class="o">:</span> <span class="s1">&#39;+1000000000&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;postcode&#39;</span><span class="o">:</span> <span class="s1">&#39;10001&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;retail_group&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">844</span><span class="p">,</span>
+                   <span class="s1">&#39;internal_note&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;logo_url&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Tipsi&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;shortcut&#39;</span><span class="o">:</span> <span class="s1">&#39;group1&#39;</span><span class="p">},</span>
+                  <span class="p">{</span><span class="s1">&#39;description&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">845</span><span class="p">,</span>
+                   <span class="s1">&#39;internal_note&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;logo_url&#39;</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Tipsi&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;shortcut&#39;</span><span class="o">:</span> <span class="s1">&#39;group2&#39;</span><span class="p">}],</span>
+ <span class="s1">&#39;website&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+ <span class="s1">&#39;working_hours&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;holidays&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;2018-10-04&#39;</span><span class="o">:</span> <span class="p">[],</span>
+                                <span class="s1">&#39;2018-10-26&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;schedule&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;fri&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;mon&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;11:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sat&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;sun&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;10:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;6:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;thu&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00PM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;2:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00PM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;tue&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;1:00PM&#39;</span><span class="p">,</span> <span class="s1">&#39;1:00AM&#39;</span><span class="p">]],</span>
+                                <span class="s1">&#39;wed&#39;</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;9:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;12:00AM&#39;</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="s1">&#39;1:00AM&#39;</span><span class="p">,</span> <span class="s1">&#39;3:00AM&#39;</span><span class="p">]]},</span>
+                   <span class="s1">&#39;time_zone&#39;</span><span class="o">:</span> <span class="s1">&#39;America/New_York&#39;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="store-products">
+<span id="endpoints-store-products"></span><h2>Store products<a class="headerlink" href="#store-products" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-store-store-id-wine-drink-list-or-store-wine-drink">
+<h3>/api/rest/v001/store/&lt;store_id&gt;/{wine,drink} - List or store wine/drink<a class="headerlink" href="#api-rest-v001-store-store-id-wine-drink-list-or-store-wine-drink" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-rest-v001-store-(int-store_id)-wine">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/wine</code><a class="headerlink" href="#get--api-rest-v001-store-(int-store_id)-wine" title="Permalink to this definition">¶</a></dt>
+<dd><p>In get params must be list of fields for each struct inventory structs. If not specified which
+fields to fetch for a given struct, it will contain only “id” parameter. Param name, related to
+a given struct, listed below in inventory_fields description.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>inventory_fields</strong> – <em>(str list)</em> Inventory fields list from <a class="reference internal" href="dyn_serializers.html#retailwinedynserializer"><span class="std std-ref">RetailWineDynSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-rest-v001-store-(int-store_id)-wine">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/wine</code><a class="headerlink" href="#get--api-rest-v001-store-(int-store_id)-wine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as wines list, but for drinks</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Params store_id:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><em>(int)</em> Store id</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>inventory_fields</strong> – <em>(str list)</em> Inventory fields list from <a class="reference internal" href="dyn_serializers.html#retaildrinkdynserializer"><span class="std std-ref">RetailDrinkDynSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="api-rest-v001-store-store-id-wine-drink-create-store-wine-drink">
+<span id="endpoints-store-products-create"></span><h3>/api/rest/v001/store/&lt;store_id&gt;/{wine,drink} - Create store wine/drink<a class="headerlink" href="#api-rest-v001-store-store-id-wine-drink-create-store-wine-drink" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-rest-v001-store-(int-store_id)-wine">
+<code class="descname">POST </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/wine</code><a class="headerlink" href="#post--api-rest-v001-store-(int-store_id)-wine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a retail inventory wine. Minimal parameters for wine: barcodes and external_id. If wine_id
+is not passed, it will create item in unmatched state. Such item doesn’t have linked wine, but
+it’s useful when wine should be manually matched by Tipsi team.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Params store_id:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><em>(int)</em> Store id</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>{}</strong> – fields from <a class="reference internal" href="dyn_serializers.html#retailwinecreateserializer"><span class="std std-ref">RetailWineCreateSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-rest-v001-store-(int-store_id)-drink">
+<code class="descname">POST </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/drink</code><a class="headerlink" href="#post--api-rest-v001-store-(int-store_id)-drink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to ‘create store wine’, but for drink.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Params store_id:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><em>(int)</em> Store id</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>{}</strong> – fields from <a class="reference internal" href="dyn_serializers.html#retaildrinkcreateserializer"><span class="std std-ref">RetailDrinkCreateSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="external-id-operations">
+<span id="endpoints-ext-id-operations"></span><h2>External id operations<a class="headerlink" href="#external-id-operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-store-store-id-ext-external-id-get-update-or-delete-product">
+<h3>/api/rest/v001/store/&lt;store_id&gt;/ext/&lt;external_id&gt; - Get, update or delete product<a class="headerlink" href="#api-rest-v001-store-store-id-ext-external-id-get-update-or-delete-product" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-rest-v001-store-(int-store_id)-ext-(int-external_id)">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/ext/</code><span class="sig-paren">(</span><em class="property">int: </em><em>external_id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--api-rest-v001-store-(int-store_id)-ext-(int-external_id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve product</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>inventory_fields</strong> – <em>(str list)</em> Inventory fields list from <a class="reference internal" href="dyn_serializers.html#retailwinedynserializer"><span class="std std-ref">RetailWineDynSerializer</span></a> or <a class="reference internal" href="dyn_serializers.html#retaildrinkdynserializer"><span class="std std-ref">RetailDrinkDynSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="patch">
+<dt id="patch--api-rest-v001-store-(int-store_id)-ext-(int-external_id)">
+<code class="descname">PATCH </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/ext/</code><span class="sig-paren">(</span><em class="property">int: </em><em>external_id</em><span class="sig-paren">)</span><a class="headerlink" href="#patch--api-rest-v001-store-(int-store_id)-ext-(int-external_id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update product meta information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>{}</strong> – fields from <a class="reference internal" href="dyn_serializers.html#retailinvextidupdateserializer"><span class="std std-ref">RetailInvExtIdUpdateSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-rest-v001-store-(int-store_id)-ext-(int-external_id)">
+<code class="descname">DELETE </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/ext/</code><span class="sig-paren">(</span><em class="property">int: </em><em>external_id</em><span class="sig-paren">)</span><a class="headerlink" href="#delete--api-rest-v001-store-(int-store_id)-ext-(int-external_id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete product</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="full-text-search">
+<span id="endpoints-fts-search"></span><h2>Full text search<a class="headerlink" href="#full-text-search" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-fts-search-products">
+<h3>/api/rest/v001/fts/ - Search products<a class="headerlink" href="#api-rest-v001-fts-search-products" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-rest-v001-fts-">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/fts/</code><a class="headerlink" href="#get--api-rest-v001-fts-" title="Permalink to this definition">¶</a></dt>
+<dd><p>To filter products by <cite>product_type</cite> just add that type (<cite>wine</cite> or <cite>drink</cite>) to
+<cite>fts_fields</cite>. (For instance to get only wines you should add <cite>wine</cite> to
+<cite>fts_fields</cite> and do not add <cite>drink</cite> to <cite>fts_fields</cite> and do not add <cite>drink_fields</cite>
+query param)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>fts_fields</strong> – <em>(str list)</em> fields from <a class="reference internal" href="dyn_serializers.html#ftsserializer"><span class="std std-ref">FTSSerializer</span></a></li>
+<li><strong>order_by</strong> – <p><em>(str list)</em> fields to order by. (e.g. ‘-vintage’). Sign ‘-‘ revers
+sort direction. Default ordering <cite>id</cite> (<cite>-rank,id</cite> in case <cite>query</cite> param is passed to request).
+Available fields:</p>
+<ul>
+<li>vintage  - wine vintage (doesn’t make sence for drinks)</li>
+</ul>
+</li>
+<li><strong>query</strong> – <em>(str)</em> Full text search.</li>
+<li><strong>wine_id</strong> – <em>(int list)</em> Filter by wine_id (can be used with drink_id, in such case
+endpoint returns wines and drink together. See example 3)</li>
+<li><strong>drink_id</strong> – <em>(int list)</em> Filter by drink_id (can be used with wine_id, in such case
+endpoint returns wines and drink together. See example 3)</li>
+<li><strong>tag</strong> – <em>(int list)</em> Filter drinks by drink_tag id</li>
+<li><strong>producer_id</strong> – <em>(int list)</em> Filter drinks by producer</li>
+<li><strong>drink_type</strong> – <p><em>(str list)</em> Filter drinks by drink_type. Available drink_type:</p>
+<ul>
+<li>beer</li>
+<li>cocktail</li>
+<li>spirits</li>
+<li>other</li>
+</ul>
+</li>
+<li><strong>varietal_id</strong> – <em>(int list)</em> Filter wines by varietal id</li>
+<li><strong>sub_region_id</strong> – <em>(int list)</em> Filter wines by subregion id</li>
+<li><strong>winery_id</strong> – <em>(int list)</em> Filter wines by winery id</li>
+<li><strong>vineyard_id</strong> – <em>(int list)</em> Filter wines by vineyard id</li>
+<li><strong>designation_id</strong> – <em>(int list)</em> Filter wines by designation id</li>
+<li><strong>region_id</strong> – <em>(int list)</em> Filter wines by region id</li>
+<li><strong>vintage</strong> – <em>(int|NV list)</em> Filter wines by vintage (<cite>NV</cite> for non-vintage)</li>
+<li><strong>color</strong> – <em>(int list)</em> Filter wines by color</li>
+<li><strong>wine_type</strong> – <p><em>(str list)</em> Filter wines by type. Available types:</p>
+<ul>
+<li>regular</li>
+<li>fortified</li>
+<li>sparkling</li>
+<li>dessert</li>
+<li>offdry</li>
+</ul>
+</li>
+<li><strong>pro_rating_from</strong> – <em>(int)</em> Filter wines by min pro_rating</li>
+<li><strong>pro_rating_to</strong> – <em>(int)</em> Filter wines by max pro_rating</li>
+<li><strong>country_id</strong> – <em>(int list)</em> Filter wines and drinks by country id</li>
+<li><strong>country_id_exclude</strong> – <em>(int list)</em> Filter wines and drinks which are not in country id</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p><strong>Search API requires at least one of next http query params:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>query</li>
+<li>wine_id</li>
+<li>drink_id</li>
+<li>winery_id</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="pos-sync">
+<span id="endpoints-pos-sync-ops"></span><h2>POS Sync<a class="headerlink" href="#pos-sync" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-store-store-id-ext-sync-sync-inventory">
+<span id="endpoints-pos-sync"></span><h3>/api/rest/v001/store/&lt;store_id&gt;/ext/sync - Sync Inventory<a class="headerlink" href="#api-rest-v001-store-store-id-ext-sync-sync-inventory" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--api-rest-v001-store-(int-store_id)-ext-sync">
+<code class="descname">PATCH </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/ext/sync</code><a class="headerlink" href="#patch--api-rest-v001-store-(int-store_id)-ext-sync" title="Permalink to this definition">¶</a></dt>
+<dd><p>Body must be JSON encoded array list of inventory structs. Each struct has to contain
+“external_id” param, which will be used to lookup related item in inventory. Unnecessary params
+can be omitted, in that case they will not be updated. By the way, as “external_id” is used to
+lookup inventory, inventory Tipsi “id” param is prohibited here as the request will look
+ambiguously, thus trying to use it will cause error with HTTP respone 400.</p>
+<p><strong>NOTE</strong>: you need to specify “category” field on item to be either: “wine” or “drink” to create
+tasks with correct types</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>[]</strong> – list of structs with fields from <a class="reference internal" href="dyn_serializers.html#retailinvextidbulkcreateserializer"><span class="std std-ref">RetailInvExtIdBulkCreateSerializer</span></a> or <a class="reference internal" href="dyn_serializers.html#retailinvextidbulkupdateserializer"><span class="std std-ref">RetailInvExtIdBulkUpdateSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="api-rest-v001-store-store-id-ext-sync-clear-sync-inventory-with-clearing">
+<span id="endpoints-pos-sync-clear"></span><h3>/api/rest/v001/store/&lt;store_id&gt;/ext/sync_clear - Sync Inventory With Clearing<a class="headerlink" href="#api-rest-v001-store-store-id-ext-sync-clear-sync-inventory-with-clearing" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--api-rest-v001-store-(int-store_id)-ext-sync_clear">
+<code class="descname">PATCH </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/ext/sync_clear</code><a class="headerlink" href="#patch--api-rest-v001-store-(int-store_id)-ext-sync_clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same, as <a class="reference internal" href="#endpoints-pos-sync"><span class="std std-ref">/api/rest/v001/store/&lt;store_id&gt;/ext/sync - Sync Inventory</span></a>, except will clear inventory not listed in the batch. It’s a
+safe method as it will just mark in_stock parameter to 0. For real inventory deletion DELETE
+method should be used upon each inventory item.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>[]</strong> – list of structs with fields from <a class="reference internal" href="dyn_serializers.html#retailinvextidbulkcreateserializer"><span class="std std-ref">RetailInvExtIdBulkCreateSerializer</span></a> or <a class="reference internal" href="dyn_serializers.html#retailinvextidbulkupdateserializer"><span class="std std-ref">RetailInvExtIdBulkUpdateSerializer</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="create-tasks">
+<h2>Create tasks<a class="headerlink" href="#create-tasks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-store-store-id-image-upload-upload-image">
+<span id="endpoints-upload-image"></span><h3>/api/rest/v001/store/&lt;store_id&gt;/image_upload - Upload image<a class="headerlink" href="#api-rest-v001-store-store-id-image-upload-upload-image" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-rest-v001-store-(int-store_id)-image_upload">
+<code class="descname">POST </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/image_upload</code><a class="headerlink" href="#post--api-rest-v001-store-(int-store_id)-image_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload image</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Form Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>image</strong> – Image file encoded using standard “multipart/form-data”</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="api-rest-v001-store-store-id-wine-drink-wine-inventory-id-create-task-create-task">
+<span id="endpoints-create-task"></span><h3>api/rest/v001/store/&lt;store_id&gt;/{wine,drink}/&lt;wine_inventory_id&gt;/create_task - Create task<a class="headerlink" href="#api-rest-v001-store-store-id-wine-drink-wine-inventory-id-create-task-create-task" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-rest-v001-store-(int-store_id)-wine-(int-inventory_id)-create_task">
+<code class="descname">POST </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/wine/</code><span class="sig-paren">(</span><em class="property">int: </em><em>inventory_id</em><span class="sig-paren">)</span><code class="descname">/create_task</code><a class="headerlink" href="#post--api-rest-v001-store-(int-store_id)-wine-(int-inventory_id)-create_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create task for unmatched wine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>front_image</strong> (<em>string</em>) – <em>(str) required</em> Front image url.</li>
+<li><strong>back_image</strong> (<em>string</em>) – <em>(str)</em> Back image url.</li>
+<li><strong>vintage</strong> (<em>string</em>) – <em>(str)</em> Wine vintage.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--api-rest-v001-store-(int-store_id)-drink-(int-inventory_id)-create_task">
+<code class="descname">POST </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/drink/</code><span class="sig-paren">(</span><em class="property">int: </em><em>inventory_id</em><span class="sig-paren">)</span><code class="descname">/create_task</code><a class="headerlink" href="#post--api-rest-v001-store-(int-store_id)-drink-(int-inventory_id)-create_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create task for unmatched drink</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>store_id</strong> – <em>(int)</em> Store id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>front_image</strong> (<em>string</em>) – <em>(str) required</em> Front image url.</li>
+<li><strong>back_image</strong> (<em>string</em>) – <em>(str)</em> Back image url.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="orders-api">
+<h2>Orders API<a class="headerlink" href="#orders-api" title="Permalink to this headline">¶</a></h2>
+<p id="endpoint-orders-list">A user must have admin privileges to fetch or modify store orders.</p>
+<div class="section" id="api-rest-v001-group-group-id-order-management-order-list-of-orders-for-retail-group">
+<h3>api/rest/v001/group/&lt;group_id&gt;/order_management/order/ - List of orders for retail group<a class="headerlink" href="#api-rest-v001-group-group-id-order-management-order-list-of-orders-for-retail-group" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-rest-v001-group-group-(int-group_id)-order_management-order-">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/group/group/</code><span class="sig-paren">(</span><em class="property">int: </em><em>group_id</em><span class="sig-paren">)</span><code class="descname">/order_management/order/</code><a class="headerlink" href="#get--api-rest-v001-group-group-(int-group_id)-order_management-order-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return paginated orders list of all the stores in the given retail group. If you want to limit results to the
+given store, it’s required to pass store_id into query parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>group_id</strong> – <em>(int)</em> Retail group id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>query</strong> – <em>(str)</em> Filter order by search string. Do full/partial/match with typos for following fields: code, user name, phone</li>
+<li><strong>order_fields</strong> – <em>(str list)</em> List of requested order fields from <a class="reference internal" href="dyn_serializers.html#orderserializer"><span class="std std-ref">OrderSerializer</span></a></li>
+<li><strong>store_fields</strong> – <em>(str list)</em> List of requested order store fields from <a class="reference internal" href="dyn_serializers.html#storeserializerintegration"><span class="std std-ref">StoreSerializerIntegration</span></a></li>
+<li><strong>store_id</strong> – <em>(int)</em> Limit results to the given store_id, optional parameter</li>
+<li><strong>page</strong> – <em>(int)</em> Page number starting from “1”, optional parameter</li>
+<li><strong>page_size</strong> – <em>(int)</em> The number of results per a page, optional parameter</li>
+<li><strong>order_status</strong> – <em>(str list)</em> Filter orders by order_status. For statuses see <a class="reference internal" href="dyn_serializers.html#orderserializer"><span class="std std-ref">OrderSerializer</span></a></li>
+<li><strong>order_status_exclude</strong> – <em>(str list)</em> Exclude orders with given order_status. For statuses see <a class="reference internal" href="dyn_serializers.html#orderserializer"><span class="std std-ref">OrderSerializer</span></a></li>
+<li><strong>payment_status</strong> – <em>(str list)</em> Filter orders by payment_status. For statuses see <a class="reference internal" href="dyn_serializers.html#orderserializer"><span class="std std-ref">OrderSerializer</span></a></li>
+<li><strong>updated_from</strong> – <em>(str)</em> Show orders updated from given time. (e.g. <cite>2018-05-05 8:00</cite>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/api/rest/v001/group/1/order_management/order/?order_fields=id,store,store_id,order_status&amp;store_fields=id,name&amp;order_status=placed,pickup_ready</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="nx">None</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span> <span class="s1">&#39;count&#39;</span><span class="o">:</span> <span class="mi">67</span><span class="p">,</span>
+  <span class="s1">&#39;next&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s1">&#39;previous&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+  <span class="s1">&#39;results&#39;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">239</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup_ready&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">238</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;placed&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">233</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup_ready&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">232</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;placed&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">231</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;placed&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">228</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup_ready&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">227</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;placed&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">221</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup_ready&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">220</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;placed&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">},</span>
+               <span class="p">{</span> <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">219</span><span class="p">,</span>
+                 <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;placed&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">},</span>
+                 <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">}]}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="api-rest-v001-group-group-id-order-management-order-order-id-order-api">
+<h3>api/rest/v001/group/&lt;group_id&gt;/order_management/order/&lt;order_id&gt;/ - Order api<a class="headerlink" href="#api-rest-v001-group-group-id-order-management-order-order-id-order-api" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-rest-v001-group-(int-group_id)-order_management-order-">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/group/</code><span class="sig-paren">(</span><em class="property">int: </em><em>group_id</em><span class="sig-paren">)</span><code class="descname">/order_management/order/</code><a class="headerlink" href="#get--api-rest-v001-group-(int-group_id)-order_management-order-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return paginated orders list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>group_id</strong> – <em>(int)</em> Retail group id</li>
+<li><strong>order_id</strong> – <em>(int)</em> Order id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>order_fields</strong> – <em>(str list)</em> List of requested order fields from <a class="reference internal" href="dyn_serializers.html#orderserializer"><span class="std std-ref">OrderSerializer</span></a></li>
+<li><strong>store_fields</strong> – <em>(str list)</em> List of requested order store fields from <a class="reference internal" href="dyn_serializers.html#storeserializerintegration"><span class="std std-ref">StoreSerializerIntegration</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/api/rest/v001/group/1/order_management/order/239/?order_fields=code,created,delivery_info,delivery_price,delivery_tax,delivery_type,group_id,id,order_status,payment_error,payment_status,products_tax,products_discount,products_price,shopping_hint_description,shopping_hint_title,store,total_count,total_price,updated,user_id&amp;store_fields=id,address,city,country,external_id,location,name,orders_enabled,phone_number,postcode,retail_group,website,working_hours</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="nx">None</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span> <span class="s1">&#39;code&#39;</span><span class="o">:</span> <span class="s1">&#39;96UF-DCG3&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;created&#39;</span><span class="o">:</span> <span class="s1">&#39;2019-06-03T13:27:50.995105&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;delivery_info&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;phone&#39;</span><span class="o">:</span> <span class="s1">&#39;+1111111111&#39;</span><span class="p">},</span>
+  <span class="s1">&#39;delivery_price&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;delivery_tax&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;delivery_type&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;group_id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">239</span><span class="p">,</span>
+  <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup_ready&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;payment_error&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+  <span class="s1">&#39;payment_status&#39;</span><span class="o">:</span> <span class="s1">&#39;held&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;products_discount&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;products_price&#39;</span><span class="o">:</span> <span class="s1">&#39;25.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;products_tax&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;shopping_hint_description&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+  <span class="s1">&#39;shopping_hint_title&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+  <span class="s1">&#39;store&#39;</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;address&#39;</span><span class="o">:</span> <span class="s1">&#39;99 E Main St, Huntington&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;city&#39;</span><span class="o">:</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span>
+             <span class="s1">&#39;location&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="o">:</span> <span class="mf">40.8785306207</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="o">:</span> <span class="o">-</span><span class="mf">73.4087982322</span><span class="p">},</span>
+             <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Bottles and Cases&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;orders_enabled&#39;</span><span class="o">:</span> <span class="nx">True</span><span class="p">,</span>
+             <span class="s1">&#39;phone_number&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+             <span class="s1">&#39;postcode&#39;</span><span class="o">:</span> <span class="s1">&#39;11743&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;retail_group&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">}],</span>
+             <span class="s1">&#39;website&#39;</span><span class="o">:</span> <span class="s1">&#39;http://www.bottlesandcases.com/main.asp?request=REGIONPAGE&amp;type=W&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;working_hours&#39;</span><span class="o">:</span> <span class="p">{}},</span>
+  <span class="s1">&#39;total_count&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">&#39;total_price&#39;</span><span class="o">:</span> <span class="s1">&#39;25.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;updated&#39;</span><span class="o">:</span> <span class="s1">&#39;2019-06-03T13:27:54.855488&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;user_id&#39;</span><span class="o">:</span> <span class="mi">4520</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="api-rest-v001-group-group-id-order-management-order-order-id-update-order-status">
+<h3>api/rest/v001/group/&lt;group_id&gt;/order_management/order/&lt;order_id&gt;/ - Update order status<a class="headerlink" href="#api-rest-v001-group-group-id-order-management-order-order-id-update-order-status" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--api-rest-v001-group-(int-group_id)-order_management-order-(int-order_id)-">
+<code class="descname">PATCH </code><code class="descname">/api/rest/v001/group/</code><span class="sig-paren">(</span><em class="property">int: </em><em>group_id</em><span class="sig-paren">)</span><code class="descname">/order_management/order/</code><span class="sig-paren">(</span><em class="property">int: </em><em>order_id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#patch--api-rest-v001-group-(int-group_id)-order_management-order-(int-order_id)-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update order status.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>group_id</strong> – <em>(int)</em> Retail group id</li>
+<li><strong>order_id</strong> – <em>(int)</em> Order id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>order_status</strong> (<em>string</em>) – <em>(str)</em> Order status. (approved, pickup_ready, delivered, in_transit, reconciled, canceled_by_retail)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">PATCH</span> <span class="nn">/api/rest/v001/group/1/order_management/order/239/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup_ready&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span> <span class="s1">&#39;code&#39;</span><span class="o">:</span> <span class="s1">&#39;96UF-DCG3&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;created&#39;</span><span class="o">:</span> <span class="s1">&#39;2019-06-03T13:27:50.995105&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;delivery_info&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;phone&#39;</span><span class="o">:</span> <span class="s1">&#39;+1111111111&#39;</span><span class="p">},</span>
+  <span class="s1">&#39;delivery_price&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;delivery_tax&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;delivery_type&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">&#39;group_id&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">239</span><span class="p">,</span>
+  <span class="s1">&#39;order_status&#39;</span><span class="o">:</span> <span class="s1">&#39;pickup_ready&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;payment_date&#39;</span><span class="o">:</span> <span class="s1">&#39;2019-06-03T13:27:54.736452&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;payment_status&#39;</span><span class="o">:</span> <span class="s1">&#39;held&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;products_discount&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;products_price&#39;</span><span class="o">:</span> <span class="s1">&#39;25.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;products_tax&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;store_id&#39;</span><span class="o">:</span> <span class="mi">19351</span><span class="p">,</span>
+  <span class="s1">&#39;total_price&#39;</span><span class="o">:</span> <span class="s1">&#39;25.00&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;updated&#39;</span><span class="o">:</span> <span class="s1">&#39;2019-06-03T13:27:54.855488&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;user_id&#39;</span><span class="o">:</span> <span class="mi">4520</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="api-rest-v001-group-group-id-payment-system-order-order-id-update-payment-status">
+<h3>api/rest/v001/group/&lt;group_id&gt;/payment_system/order/&lt;order_id&gt;/ - Update payment status<a class="headerlink" href="#api-rest-v001-group-group-id-payment-system-order-order-id-update-payment-status" title="Permalink to this headline">¶</a></h3>
+<dl class="patch">
+<dt id="patch--api-rest-v001-group-(int-group_id)-payment_system-order-(int-order_id)-">
+<code class="descname">PATCH </code><code class="descname">/api/rest/v001/group/</code><span class="sig-paren">(</span><em class="property">int: </em><em>group_id</em><span class="sig-paren">)</span><code class="descname">/payment_system/order/</code><span class="sig-paren">(</span><em class="property">int: </em><em>order_id</em><span class="sig-paren">)</span><code class="descname">/</code><a class="headerlink" href="#patch--api-rest-v001-group-(int-group_id)-payment_system-order-(int-order_id)-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update order status. Allowed to change only from status <cite>held</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>group_id</strong> – <em>(int)</em> Retail group id</li>
+<li><strong>order_id</strong> – <em>(int)</em> Order id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Request JSON Object:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>status</strong> (<em>string</em>) – <em>(str)</em> Payment status. (capturing, refunding)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">PATCH</span> <span class="nn">/api/rest/v001/group/1/payment_system/order/239/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;capturing&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;order_id&#39;</span><span class="o">:</span> <span class="mi">239</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;capturing&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="api-rest-v001-group-group-id-order-management-order-order-id-product-list-products">
+<h3>api/rest/v001/group/&lt;group_id&gt;/order_management/order/&lt;order_id&gt;/product/ - List products<a class="headerlink" href="#api-rest-v001-group-group-id-order-management-order-order-id-product-list-products" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-rest-v001-group-(int-group_id)-order_management-order-(int-order_id)-product-">
+<code class="descname">GET </code><code class="descname">/api/rest/v001/group/</code><span class="sig-paren">(</span><em class="property">int: </em><em>group_id</em><span class="sig-paren">)</span><code class="descname">/order_management/order/</code><span class="sig-paren">(</span><em class="property">int: </em><em>order_id</em><span class="sig-paren">)</span><code class="descname">/product/</code><a class="headerlink" href="#get--api-rest-v001-group-(int-group_id)-order_management-order-(int-order_id)-product-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return paginated products list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>group_id</strong> – <em>(int)</em> Retail group id</li>
+<li><strong>order_id</strong> – <em>(int)</em> Order id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>product_fields</strong> – <em>(str list)</em> List of requested order fields from <a class="reference internal" href="dyn_serializers.html#productserializer"><span class="std std-ref">ProductSerializer</span></a></li>
+<li><strong>page</strong> – <em>(int)</em> Page number starting from “1”, optional parameter</li>
+<li><strong>page_size</strong> – <em>(int)</em> The number of results per a page, optional parameter</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/api/rest/v001/group/1/order_management/order/240/product/?product_fields=barcodes,count,created,discount_long_text,discount_percent,discount_short_text,discount_type,drink_id,external_id,id,inventory_id,name,order,total_price,updated,wine_id</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="nx">None</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span> <span class="s1">&#39;count&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">&#39;next&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+  <span class="s1">&#39;previous&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+  <span class="s1">&#39;results&#39;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s1">&#39;barcodes&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;5010327996226&#39;</span><span class="p">],</span>
+                 <span class="s1">&#39;count&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                 <span class="s1">&#39;created&#39;</span><span class="o">:</span> <span class="s1">&#39;2019-06-03T13:27:55.763348&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;discount_long_text&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+                 <span class="s1">&#39;discount_percent&#39;</span><span class="o">:</span> <span class="s1">&#39;0.00&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;discount_short_text&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+                 <span class="s1">&#39;discount_type&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">,</span>
+                 <span class="s1">&#39;drink_id&#39;</span><span class="o">:</span> <span class="mi">1732</span><span class="p">,</span>
+                 <span class="s1">&#39;external_id&#39;</span><span class="o">:</span> <span class="s1">&#39;11178&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">699</span><span class="p">,</span>
+                 <span class="s1">&#39;inventory_id&#39;</span><span class="o">:</span> <span class="mi">1019</span><span class="p">,</span>
+                 <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;James Alexander Red Label Blended Scotch Whisky&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;order&#39;</span><span class="o">:</span> <span class="mi">240</span><span class="p">,</span>
+                 <span class="s1">&#39;total_price&#39;</span><span class="o">:</span> <span class="s1">&#39;25.00&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;updated&#39;</span><span class="o">:</span> <span class="s1">&#39;2019-06-03T13:27:55.771611&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;wine_id&#39;</span><span class="o">:</span> <span class="nx">None</span><span class="p">}]}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="other">
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-rest-v001-store-store-id-scan-label-get-wine-by-label-image">
+<span id="endpoints-scan-label"></span><h3>api/rest/v001/store/&lt;store_id&gt;/scan_label/ - Get wine by label image<a class="headerlink" href="#api-rest-v001-store-store-id-scan-label-get-wine-by-label-image" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-rest-v001-store-(int-store_id)-scan_label-">
+<code class="descname">POST </code><code class="descname">/api/rest/v001/store/</code><span class="sig-paren">(</span><em class="property">int: </em><em>store_id</em><span class="sig-paren">)</span><code class="descname">/scan_label/</code><a class="headerlink" href="#post--api-rest-v001-store-(int-store_id)-scan_label-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of wines.</p>
+<p><strong>Note: you should make this request as ``multipart/form``</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>label_image</strong> – <em>(int)</em> Retail group id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Query Parameters:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>wine_fields</strong> – <em>(str list)</em> List of requested order fields from <span class="xref std std-ref">PrivateRetailWineSerializer</span></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/api/rest/v001/store/1847/scan_label</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="nx">Multipart</span> <span class="nx">Binary</span><span class="o">:</span>
+<span class="p">{</span><span class="s1">&#39;label_image&#39;</span><span class="o">:</span> <span class="s1">&#39;&lt;BINARY_FILE&gt;&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/javascript</span>
+
+<span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="o">:</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;target_wine&#39;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;designation&#39;</span><span class="o">:</span> <span class="s1">&#39;Grand Cru Classé&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">612035</span><span class="p">,</span>
+                 <span class="s1">&#39;region&#39;</span><span class="o">:</span> <span class="s1">&#39;Bordeaux&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;sub_regions&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Medoc&#39;</span><span class="p">,</span> <span class="s1">&#39;Pauillac&#39;</span><span class="p">],</span>
+                 <span class="s1">&#39;varietals&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Bordeaux Blend&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;Cabernet Sauvignon&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;Merlot&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;Cabernet Franc&#39;</span><span class="p">],</span>
+                 <span class="s1">&#39;vintage&#39;</span><span class="o">:</span> <span class="s1">&#39;1978&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;winery&#39;</span><span class="o">:</span> <span class="s1">&#39;Château Lynch-Bages&#39;</span><span class="p">},</span>
+ <span class="s1">&#39;wine_variations&#39;</span><span class="o">:</span> <span class="p">[{</span><span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;designation&#39;</span><span class="o">:</span> <span class="s1">&#39;Grand Cru Classé&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">612035</span><span class="p">,</span>
+                      <span class="s1">&#39;region&#39;</span><span class="o">:</span> <span class="s1">&#39;Bordeaux&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;sub_regions&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Medoc&#39;</span><span class="p">,</span> <span class="s1">&#39;Pauillac&#39;</span><span class="p">],</span>
+                      <span class="s1">&#39;varietals&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Bordeaux Blend&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Cabernet Sauvignon&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Merlot&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Cabernet Franc&#39;</span><span class="p">],</span>
+                      <span class="s1">&#39;vintage&#39;</span><span class="o">:</span> <span class="s1">&#39;1978&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;winery&#39;</span><span class="o">:</span> <span class="s1">&#39;Château Lynch-Bages&#39;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;designation&#39;</span><span class="o">:</span> <span class="s1">&#39;Blanc de Lynch-Bages&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">774353</span><span class="p">,</span>
+                      <span class="s1">&#39;region&#39;</span><span class="o">:</span> <span class="s1">&#39;Bordeaux&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;sub_regions&#39;</span><span class="o">:</span> <span class="p">[],</span>
+                      <span class="s1">&#39;varietals&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;White Bordeaux Blend&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Sauvignon Blanc&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Semillon&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Muscadelle&#39;</span><span class="p">],</span>
+                      <span class="s1">&#39;vintage&#39;</span><span class="o">:</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;winery&#39;</span><span class="o">:</span> <span class="s1">&#39;Château Lynch-Bages&#39;</span><span class="p">},</span>
+                     <span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="o">:</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;designation&#39;</span><span class="o">:</span> <span class="s1">&#39;Grand Cru Classé&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;id&#39;</span><span class="o">:</span> <span class="mi">714631</span><span class="p">,</span>
+                      <span class="s1">&#39;region&#39;</span><span class="o">:</span> <span class="s1">&#39;Bordeaux&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;sub_regions&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Medoc&#39;</span><span class="p">,</span> <span class="s1">&#39;Pauillac&#39;</span><span class="p">],</span>
+                      <span class="s1">&#39;varietals&#39;</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Bordeaux Blend&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Cabernet Sauvignon&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Merlot&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Cabernet Franc&#39;</span><span class="p">],</span>
+                      <span class="s1">&#39;vintage&#39;</span><span class="o">:</span> <span class="s1">&#39;2015&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;winery&#39;</span><span class="o">:</span> <span class="s1">&#39;Château Lynch-Bages&#39;</span><span class="p">}]}</span>
+</pre></div>
+</div>
+<p>You will get two major keys:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">target_wine</span></code> - the most similar match</li>
+<li><code class="docutils literal"><span class="pre">wine_variations</span></code> - other similar wines ordered by match descendent order</li>
+</ul>
+<p>Then you might want to get more information about wines. You can do it by using <a class="reference internal" href="#endpoints-fts-search"><span class="std std-ref">Full text search</span></a>.
+Pass <code class="docutils literal"><span class="pre">wine_id</span></code> parameter with comma separated wines and <code class="docutils literal"><span class="pre">fts_fields=wine</span></code> to retrieve results</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://gettipsi.com/api/rest/v001/fts/?wine_id=527079,828309&amp;fts_fields=wine&amp;wine_fields=name,pro_rating,vintage,winemakers_note&#39;</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Cookie: sessionid=&lt;MY_COOKIE&gt;&#39;</span>
+</pre></div>
+</div>
+<p>Full list of fields can be found <a class="reference internal" href="dyn_serializers.html#ftsserializer"><span class="std std-ref">FTSSerializer</span></a></p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Endpoints</a><ul>
+<li><a class="reference internal" href="#login">Login</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-login-login-endpoint">/api/rest/v001/login/ - Login endpoint</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store-operations">Store operations</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-store-endpoint">/api/rest/v001/store/[&lt;store_id&gt;/] - Store endpoint</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#store-products">Store products</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-wine-drink-list-or-store-wine-drink">/api/rest/v001/store/&lt;store_id&gt;/{wine,drink} - List or store wine/drink</a></li>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-wine-drink-create-store-wine-drink">/api/rest/v001/store/&lt;store_id&gt;/{wine,drink} - Create store wine/drink</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-id-operations">External id operations</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-ext-external-id-get-update-or-delete-product">/api/rest/v001/store/&lt;store_id&gt;/ext/&lt;external_id&gt; - Get, update or delete product</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#full-text-search">Full text search</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-fts-search-products">/api/rest/v001/fts/ - Search products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pos-sync">POS Sync</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-ext-sync-sync-inventory">/api/rest/v001/store/&lt;store_id&gt;/ext/sync - Sync Inventory</a></li>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-ext-sync-clear-sync-inventory-with-clearing">/api/rest/v001/store/&lt;store_id&gt;/ext/sync_clear - Sync Inventory With Clearing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-tasks">Create tasks</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-image-upload-upload-image">/api/rest/v001/store/&lt;store_id&gt;/image_upload - Upload image</a></li>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-wine-drink-wine-inventory-id-create-task-create-task">api/rest/v001/store/&lt;store_id&gt;/{wine,drink}/&lt;wine_inventory_id&gt;/create_task - Create task</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#orders-api">Orders API</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-group-group-id-order-management-order-list-of-orders-for-retail-group">api/rest/v001/group/&lt;group_id&gt;/order_management/order/ - List of orders for retail group</a></li>
+<li><a class="reference internal" href="#api-rest-v001-group-group-id-order-management-order-order-id-order-api">api/rest/v001/group/&lt;group_id&gt;/order_management/order/&lt;order_id&gt;/ - Order api</a></li>
+<li><a class="reference internal" href="#api-rest-v001-group-group-id-order-management-order-order-id-update-order-status">api/rest/v001/group/&lt;group_id&gt;/order_management/order/&lt;order_id&gt;/ - Update order status</a></li>
+<li><a class="reference internal" href="#api-rest-v001-group-group-id-payment-system-order-order-id-update-payment-status">api/rest/v001/group/&lt;group_id&gt;/payment_system/order/&lt;order_id&gt;/ - Update payment status</a></li>
+<li><a class="reference internal" href="#api-rest-v001-group-group-id-order-management-order-order-id-product-list-products">api/rest/v001/group/&lt;group_id&gt;/order_management/order/&lt;order_id&gt;/product/ - List products</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other">Other</a><ul>
+<li><a class="reference internal" href="#api-rest-v001-store-store-id-scan-label-get-wine-by-label-image">api/rest/v001/store/&lt;store_id&gt;/scan_label/ - Get wine by label image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api_examples.html"
+                        title="previous chapter">For API clients</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dyn_serializers.html"
+                        title="next chapter">Structs</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/endpoints.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="dyn_serializers.html" title="Structs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api_examples.html" title="For API clients"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tipsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

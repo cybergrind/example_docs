@@ -1,0 +1,150 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>List or create operations &#8212; Tipsi 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/custom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Access products using external ids" href="ext_ids_operations.html" />
+    <link rel="prev" title="Store Operations" href="store_operations.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="ext_ids_operations.html" title="Access products using external ids"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="store_operations.html" title="Store Operations"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="list-or-create-operations">
+<span id="id1"></span><h1>List or create operations<a class="headerlink" href="#list-or-create-operations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-all-store-products">
+<h2>List all store products<a class="headerlink" href="#list-all-store-products" title="Permalink to this headline">¶</a></h2>
+<p>GET request to <cite>/api/rest/v001/store/STORE_ID/wine</cite> or <cite>/api/rest/v001/store/STORE_ID/drink</cite>
+endpoint will list all the available products. The endpoints are paginated - they will return a
+thousand results per page. You can modify page size by passing page_size parameter, but values
+larger than a thousand will be ignored. By the way, all GET APIs are lazy - by default they will
+only return object id. Fields should be requested explicitly as GET parameter - a comma separated
+list of fields for each struct, see <a class="reference internal" href="dyn_serializers.html#retailwinedynserializer"><span class="std std-ref">RetailWineDynSerializer</span></a> and
+<a class="reference internal" href="dyn_serializers.html#retaildrinkdynserializer"><span class="std std-ref">RetailDrinkDynSerializer</span></a> for the full structs description.</p>
+<p>The example below requests wine inventory and nested fields (ids, barcodes, vintage and etc):</p>
+<img alt="_images/retail_store_wines.png" src="_images/retail_store_wines.png" />
+<p>See <a class="reference internal" href="endpoints.html#endpoints-store-products"><span class="std std-ref">Store products</span></a> for more details.</p>
+</div>
+<div class="section" id="add-product-to-store">
+<h2>Add product to store<a class="headerlink" href="#add-product-to-store" title="Permalink to this headline">¶</a></h2>
+<p>POST request to <cite>/api/rest/v001/store/STORE_ID/wine</cite> or <cite>/api/rest/v001/store/STORE_ID/drink</cite>
+endpoint will create a new inventory item, wine_id or drink_id parameter is required. Usually
+you get wine_id or drink_id through full text search across Tipsi database. Other required
+parameters - barcodes (can be an empty list, though) and external id (item ID in your database).
+Params should be formatted as JSON dictionary.</p>
+<p>The sample will create a new inventory item with assigned drink id 6755 and empty barcodes list.
+Barcodes can be empty, but the parameter is required</p>
+<img alt="_images/store_add_drink.png" src="_images/store_add_drink.png" />
+<p>See <a class="reference internal" href="endpoints.html#endpoints-store-products"><span class="std std-ref">Store products</span></a> for more details.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">List or create operations</a><ul>
+<li><a class="reference internal" href="#list-all-store-products">List all store products</a></li>
+<li><a class="reference internal" href="#add-product-to-store">Add product to store</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="store_operations.html"
+                        title="previous chapter">Store Operations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ext_ids_operations.html"
+                        title="next chapter">Access products using external ids</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/list_or_create_operations.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="ext_ids_operations.html" title="Access products using external ids"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="store_operations.html" title="Store Operations"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tipsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

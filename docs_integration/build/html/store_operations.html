@@ -1,0 +1,146 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Store Operations &#8212; Tipsi 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/custom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="List or create operations" href="list_or_create_operations.html" />
+    <link rel="prev" title="Quick Start" href="quick_start.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="list_or_create_operations.html" title="List or create operations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="quick_start.html" title="Quick Start"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="store-operations">
+<h1>Store Operations<a class="headerlink" href="#store-operations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-stores">
+<h2>List stores<a class="headerlink" href="#list-stores" title="Permalink to this headline">¶</a></h2>
+<p>GET request to <cite>/api/rest/v001/store/?group_id=&lt;GROUP_ID&gt;</cite> endpoint will list all retail stores
+with group_id=GROUP_ID. The endpoints are paginated - they will return a 25 results per page.
+You can modify page size by passing page_size parameter, but values larger than a 100 will be
+ignored. By the way, all GET APIs are lazy - by default they will only return object id.
+Fields should be requested explicitly as GET parameter - a comma separated list of fields for each
+struct, see <a class="reference internal" href="dyn_serializers.html#storeserializerintegration"><span class="std std-ref">StoreSerializerIntegration</span></a> for the full structs description.</p>
+<p>The example below requests wine inventory and nested fields (ids, barcodes, vintage and etc):</p>
+<img alt="_images/store_list.png" src="_images/store_list.png" />
+</div>
+<div class="section" id="update-store">
+<h2>Update store<a class="headerlink" href="#update-store" title="Permalink to this headline">¶</a></h2>
+<p>Perform PATCH request to store URL <a class="reference external" href="https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/">https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/</a>
+Only passed parameters will be modified, as conventionally PATCH performs partial updates, omitted
+parameters will remain unchanged. Params should be formatted as JSON. Some store fields are read
+only. For list of available fields please see <a class="reference internal" href="dyn_serializers.html#storeserializerintegration"><span class="std std-ref">StoreSerializerIntegration</span></a></p>
+<p>Example update store working hours</p>
+<img alt="_images/store_update.png" src="_images/store_update.png" />
+<p>See <a class="reference internal" href="endpoints.html#endpoints-store"><span class="std std-ref">Store operations</span></a> for more details.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Store Operations</a><ul>
+<li><a class="reference internal" href="#list-stores">List stores</a></li>
+<li><a class="reference internal" href="#update-store">Update store</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="quick_start.html"
+                        title="previous chapter">Quick Start</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="list_or_create_operations.html"
+                        title="next chapter">List or create operations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/store_operations.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="list_or_create_operations.html" title="List or create operations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="quick_start.html" title="Quick Start"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tipsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

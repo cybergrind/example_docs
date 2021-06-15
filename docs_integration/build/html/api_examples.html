@@ -1,0 +1,263 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>For API clients &#8212; Tipsi 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/custom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Endpoints" href="endpoints.html" />
+    <link rel="prev" title="Label Processing Tasks Guide" href="label_processing_tasks.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="endpoints.html" title="Endpoints"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="label_processing_tasks.html" title="Label Processing Tasks Guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="for-api-clients">
+<h1>For API clients<a class="headerlink" href="#for-api-clients" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Right now our database contains 330000+ validated wines and 30000+ drinks.</li>
+<li>We support batch upload and download when you need synchronize many items and avoid multiple api requests</li>
+<li>You can use text search API’s to find required product</li>
+<li>You can use our backend in your product or download and cache data on your side</li>
+</ul>
+</div>
+<div class="section" id="wine-data-example">
+<h2>Wine data example<a class="headerlink" href="#wine-data-example" title="Permalink to this headline">¶</a></h2>
+<p>You can find all hierarchy for wine here: <a class="reference internal" href="dyn_serializers.html#inventoryserializer"><span class="std std-ref">InventorySerializer</span></a> + <a class="reference internal" href="dyn_serializers.html#winedynserializer"><span class="std std-ref">WineDynSerializer</span></a></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;next&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;previous&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">498102</span><span class="p">,</span>
+      <span class="nt">&quot;inventory&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;batch_price&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;8.99&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">498102</span><span class="p">,</span>
+        <span class="nt">&quot;old_price&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;in_stock&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;pack_size&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;unit_size&quot;</span><span class="p">:</span> <span class="s2">&quot;750ml&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;on_sale&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value_pick&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;tax&quot;</span><span class="p">:</span> <span class="s2">&quot;6.625&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;staff_pick&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;wine&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;pro_rating&quot;</span><span class="p">:</span> <span class="p">[],</span>
+          <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;image_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://testtipsiphotos.s3.amazonaws.com/countries/Italy_main_map.png?AWSAccessKeyId=AKIAIV6N7RGZXAP7HFMA&amp;Signature=xmdKOdCz3gl8qIEYLDMK%2B2cL8NA%3D&amp;Expires=1874928053&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;sub_regions&quot;</span><span class="p">:</span> <span class="p">[],</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Villa Jolanda Moscato &amp; Strawberry Muscat&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">680564</span><span class="p">,</span>
+          <span class="nt">&quot;style_scoring&quot;</span><span class="p">:</span> <span class="p">[],</span>
+          <span class="nt">&quot;label_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://tipsiphotos.s3.amazonaws.com/image_upload/2019-01-25/24baa5ef-cdf3-4b0d-8ff9-a185f6821042.JPG?AWSAccessKeyId=AKIAIV6N7RGZXAP7HFMA&amp;Signature=%2Bup3AZNQYMhwyn4G1YctRH0zAGw%3D&amp;Expires=1863788098&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;avg_review&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mf">3.25</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;vintage&quot;</span><span class="p">:</span> <span class="s2">&quot;NV&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;designation&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Moscato &amp; Strawberry&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+          <span class="nt">&quot;winemakers_note&quot;</span><span class="p">:</span> <span class="s2">&quot;\&quot;Tasting Notes:\nColor: Brilliant, Intense, Verging on rose.\n\nPerlage: Fine and persistent.\n\nNose: Intense and aromatic fragrance of wine and strawberry fruit.\n\nPalate: Aromatic, delicate and sweet, persistent taste.\&quot; - Villa Jolanda&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;user_review&quot;</span><span class="p">:</span> <span class="p">[],</span>
+          <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;sparkling&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;user_favorite&quot;</span><span class="p">:</span> <span class="p">[],</span>
+          <span class="nt">&quot;vintage_note&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;varietals&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Muscat can vary greatly from a light and dry to sweet and thick depending on techniques applied by the wine maker.  The wine&#39;s aroma typically exhibits hints of fresh grapes, peach and roses.&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Muscat&quot;</span>
+            <span class="p">}</span>
+          <span class="p">],</span>
+          <span class="nt">&quot;thumb_product_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://tipsiphotos.s3.amazonaws.com/image_upload/2016-07-09/f441a4c2-4aac-4eed-b6dd-8b224ca82f67_thumb_product_url.jpg?AWSAccessKeyId=AKIAIV6N7RGZXAP7HFMA&amp;Signature=zfZUPFNxEtUbA7bxVxFSJHIfp7Q%3D&amp;Expires=1857751839&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;external_id&quot;</span><span class="p">:</span> <span class="s2">&quot;19476&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="drink-data-example">
+<h2>Drink data example<a class="headerlink" href="#drink-data-example" title="Permalink to this headline">¶</a></h2>
+<p>You can find all hierarchy for drink here: <a class="reference internal" href="dyn_serializers.html#inventoryserializer"><span class="std std-ref">InventorySerializer</span></a> + <a class="reference internal" href="dyn_serializers.html#drinkdynserializer"><span class="std std-ref">DrinkDynSerializer</span></a></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;next&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;previous&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">496877</span><span class="p">,</span>
+      <span class="nt">&quot;inventory&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;batch_price&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;15.77&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">496877</span><span class="p">,</span>
+        <span class="nt">&quot;old_price&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;in_stock&quot;</span><span class="p">:</span> <span class="mi">270</span><span class="p">,</span>
+        <span class="nt">&quot;drink&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Budweiser, an American-style lager, was introduced in 1876 when company founder Adolphus Busch set out to create the United States’ first truly national beer brand – brewed to be universally popular and transcend regional tastes. Each batch of Budweiser follows the same family recipe used by five generations of Busch family brewmasters. 5% ABV\r\n\r\nTaste Notes: \r\nFresh and subtle fruit notes, a delicate malt sweetness and balanced bitterness for a clean, snappy finish. Budweiser is a medium-bodied, flavorful, crisp and pure beer with blended layers of premium American and European hop aromas, brewed for the perfect balance of flavor and refreshment. \r\n\r\nIngredients/Brewing: \r\nBudweiser is brewed using a blend of imported and classic American aroma and bittering hops, a blend of barley malts and rice. The lager undergoes a 30-day brewing process that includes the time-honored methods of “kraeusening” for natural carbonation and Beechwood aging, to create its\r\nunparalleled balance, character, and signature crisp finish. \r\n\r\nInteresting Fact: \r\nBudweiser was introduced in 1876 when company founder Adolphus Busch set out to create the United States’ first truly national beer brand – brewed to be universally popular and transcend regional tastes. \r\n\r\nEach batch of Budweiser follows the same family recipe used by five generations of Busch family brewmasters.&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;United States&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;image_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://testtipsiphotos.s3.amazonaws.com/countries/USA_1-main_map.png?AWSAccessKeyId=AKIAIV6N7RGZXAP7HFMA&amp;Signature=Xgi7A46ACIvZ7O%2BdhY80U2srBIM%3D&amp;Expires=1874928098&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Budweiser&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1851</span><span class="p">,</span>
+          <span class="nt">&quot;avg_review&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;label_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://tipsiphotos.s3.amazonaws.com/image_upload/2018-05-15/f44e37d1-7f4e-4573-9453-65c3773615e3.jpg?AWSAccessKeyId=AKIAIV6N7RGZXAP7HFMA&amp;Signature=YAGnrbNWHmW97iIGKQ%2BSTMaIqME%3D&amp;Expires=1841758440&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;tag&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;American Lager&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;drink_type&quot;</span><span class="p">:</span> <span class="s2">&quot;beer&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;user_review&quot;</span><span class="p">:</span> <span class="p">[],</span>
+          <span class="nt">&quot;user_favorite&quot;</span><span class="p">:</span> <span class="p">[],</span>
+          <span class="nt">&quot;producer&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Anheuser-Busch Companies, LLC.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">60</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;thumb_product_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://tipsiphotos.s3.amazonaws.com/image_upload/2018-05-15/f44e37d1-7f4e-4573-9453-65c3773615e3_thumb_product_url.jpg?AWSAccessKeyId=AKIAIV6N7RGZXAP7HFMA&amp;Signature=MPhuikiVbly13EK%2BnhObAF314ug%3D&amp;Expires=1845468667&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;pack_size&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="nt">&quot;unit_size&quot;</span><span class="p">:</span> <span class="s2">&quot;12 oz&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;on_sale&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;note&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value_pick&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;tax&quot;</span><span class="p">:</span> <span class="s2">&quot;6.625&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;staff_pick&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;external_id&quot;</span><span class="p">:</span> <span class="s2">&quot;20421&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">For API clients</a><ul>
+<li><a class="reference internal" href="#general-information">General information</a></li>
+<li><a class="reference internal" href="#wine-data-example">Wine data example</a></li>
+<li><a class="reference internal" href="#drink-data-example">Drink data example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="label_processing_tasks.html"
+                        title="previous chapter">Label Processing Tasks Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="endpoints.html"
+                        title="next chapter">Endpoints</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api_examples.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="endpoints.html" title="Endpoints"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="label_processing_tasks.html" title="Label Processing Tasks Guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tipsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

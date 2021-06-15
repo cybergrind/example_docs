@@ -1,0 +1,2233 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Structs &#8212; Tipsi 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/custom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Endpoints" href="endpoints.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="endpoints.html" title="Endpoints"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="structs">
+<span id="dyn-serializers"></span><h1>Structs<a class="headerlink" href="#structs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="storeserializerintegration">
+<h2>StoreSerializerIntegration<a class="headerlink" href="#storeserializerintegration" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>integration_api.serializers.StoreSerializerIntegration</em></p>
+<p>Filter field: <em>store_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>address</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>city</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>country</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>delivery_zones</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>location</td>
+<td> dict(lng:&lt;float&gt;, lat:&lt;float&gt;) </td>
+<td>Geographical location</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str [required]</td>
+<td>Store name</td>
+</tr>
+<tr class="row-even"><td>orders_enabled</td>
+<td>bool </td>
+<td>Orders enabled status</td>
+</tr>
+<tr class="row-odd"><td>phone_number</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>postcode</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>retail_group</td>
+<td><a class="reference internal" href="#retailgroupserializer"><span class="std std-ref">list[RetailGroupSerializer]</span></a> [ro]</td>
+<td>Store groups</td>
+</tr>
+<tr class="row-even"><td>website</td>
+<td>str [null]</td>
+<td>Store website address</td>
+</tr>
+<tr class="row-odd"><td>working_hours</td>
+<td>json/object </td>
+<td>Schedule. Format see below</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<p><strong>Store working_hours format</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;time_zone&quot;</span><span class="p">:</span> <span class="s2">&quot;America/New_York&quot;</span><span class="p">,</span>  <span class="o">//</span> <span class="n">timezone</span> <span class="n">names</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">iana</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">time</span><span class="o">-</span><span class="n">zones</span>
+    <span class="s2">&quot;schedule&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mon&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;11:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;10:00PM&quot;</span><span class="p">]],</span>  <span class="o">//</span> <span class="n">Same</span> <span class="n">day</span> <span class="n">working</span> <span class="n">time</span> <span class="mi">11</span><span class="p">:</span><span class="mi">00</span> <span class="o">-</span> <span class="mi">22</span><span class="p">:</span><span class="mi">00</span>
+        <span class="s2">&quot;tue&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;1:00PM&quot;</span><span class="p">,</span> <span class="s2">&quot;1:00AM&quot;</span><span class="p">]],</span>  <span class="o">//</span> <span class="n">Work</span> <span class="n">after</span> <span class="n">midnight</span> <span class="mi">13</span><span class="p">:</span><span class="mi">00</span> <span class="n">Today</span> <span class="o">-</span> <span class="mi">01</span><span class="p">:</span><span class="mi">00</span> <span class="n">Next</span> <span class="n">day</span>
+        <span class="s2">&quot;wed&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;9:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;12:00AM&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;1:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;3:00AM&quot;</span><span class="p">]],</span>  <span class="o">//</span> <span class="n">Break</span> <span class="n">after</span> <span class="n">midnight</span>
+        <span class="s2">&quot;thu&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;9:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;1:00PM&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;2:00PM&quot;</span><span class="p">,</span> <span class="s2">&quot;10:00PM&quot;</span><span class="p">]],</span>
+        <span class="s2">&quot;fri&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;9:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;10:00PM&quot;</span><span class="p">]],</span>
+        <span class="s2">&quot;sat&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;9:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;10:00PM&quot;</span><span class="p">]],</span>
+        <span class="s2">&quot;sun&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;10:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;6:00PM&quot;</span><span class="p">]]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;holidays&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;2018-10-26&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;11:00AM&quot;</span><span class="p">,</span> <span class="s2">&quot;6:00PM&quot;</span><span class="p">]],</span>  <span class="o">//</span> <span class="n">Custom</span> <span class="n">schedule</span> <span class="k">for</span> <span class="n">holiday</span>
+        <span class="s2">&quot;2018-10-04&quot;</span><span class="p">:</span> <span class="p">[]</span>  <span class="o">//</span> <span class="n">Store</span> <span class="n">doesn</span><span class="s1">&#39;t work this day</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>** Store delivery_zones format**</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Wet&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Delivery zone, where wines are allowed&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;polygons&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.4131927</span><span class="p">,</span> <span class="mf">41.8547734</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.4350295</span><span class="p">,</span> <span class="mf">41.8102200</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3582740</span><span class="p">,</span> <span class="mf">41.8122032</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3425198</span><span class="p">,</span> <span class="mf">41.8447569</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.4133644</span><span class="p">,</span> <span class="mf">41.8546029</span><span class="p">],</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3341084</span><span class="p">,</span> <span class="mf">41.8612513</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+            <span class="p">],</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Dry&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Delivery zone, where only beers or non-alcohol products are allowed&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;polygons&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.352725</span><span class="p">,</span> <span class="mf">41.8781249</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3656855</span><span class="p">,</span> <span class="mf">41.8806492</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3378849</span><span class="p">,</span> <span class="mf">41.87314</span><span class="p">],</span>
+                <span class="p">[</span><span class="o">-</span><span class="mf">71.3434982</span><span class="p">,</span> <span class="mf">41.8762716</span><span class="p">],</span>
+            <span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="orderserializer">
+<h2>OrderSerializer<a class="headerlink" href="#orderserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>order.serializers.OrderSerializer</em></p>
+<p>Filter field: <em>order_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>code</td>
+<td>str </td>
+<td>Short alphanumeric unique code, which can be used to quickly find order during pickup or delivery</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>datetime [ro]</td>
+<td>Order creation date and time. Note that order can be created some time before it was paid by user.</td>
+</tr>
+<tr class="row-even"><td>delivery_info</td>
+<td>json/object </td>
+<td>A structure containing delivery info like user name, phone, address and etc. Usually it’s populated by data from Apple or Android Pay</td>
+</tr>
+<tr class="row-odd"><td>delivery_price</td>
+<td>decimal [ro]</td>
+<td>The cost of delivery without tax included</td>
+</tr>
+<tr class="row-even"><td>delivery_tax</td>
+<td>decimal [ro]</td>
+<td>Delivery tax</td>
+</tr>
+<tr class="row-odd"><td>delivery_type</td>
+<td>str enum(pickup, delivery, shipping) [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>email</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>group_id</td>
+<td>int [required]</td>
+<td>Retail group id</td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td>Order id (invisible for user)</td>
+</tr>
+<tr class="row-odd"><td>order_status</td>
+<td>str enum(new, placed, approved, delivered, reconciled, canceled_by_retail, canceled_by_user, pickup_ready, in_transit) [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>payment_date</td>
+<td>datetime [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>payment_error</td>
+<td> str [ro]</td>
+<td>Human-readable payment error</td>
+</tr>
+<tr class="row-even"><td>payment_status</td>
+<td>str enum(new, capturing, refunding, held, captured, refunded, chargebacked, expired, tipsi_error, provider_error) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>products_discount</td>
+<td>decimal [ro]</td>
+<td>Additional discount for products. If discount already applied on product level, it will not be included in this field.</td>
+</tr>
+<tr class="row-even"><td>products_price</td>
+<td>decimal [ro]</td>
+<td>Products subtotal (without tax and delivery)</td>
+</tr>
+<tr class="row-odd"><td>products_tax</td>
+<td>decimal [ro]</td>
+<td>Products tax</td>
+</tr>
+<tr class="row-even"><td>shopping_hint_description</td>
+<td>str [null]</td>
+<td>A hint suggesting to purchase another product to cart for additional discount</td>
+</tr>
+<tr class="row-odd"><td>shopping_hint_title</td>
+<td>str [null]</td>
+<td>A title of the hint suggesting to purchase another product to cart for additional discount</td>
+</tr>
+<tr class="row-even"><td>store_id</td>
+<td>int [required]</td>
+<td>Store id which the order is linked to</td>
+</tr>
+<tr class="row-odd"><td>third_party_id</td>
+<td> str [ro]</td>
+<td>Payment provider unique id. Can be null if there is no payment</td>
+</tr>
+<tr class="row-even"><td>total_count</td>
+<td>int [ro]</td>
+<td>Total count of items in order</td>
+</tr>
+<tr class="row-odd"><td>total_price</td>
+<td> decimal [ro]</td>
+<td>Total price of the order, including taxes and delivery</td>
+</tr>
+<tr class="row-even"><td>updated</td>
+<td>datetime [ro]</td>
+<td>The date and time the order was last updated</td>
+</tr>
+<tr class="row-odd"><td>user_id</td>
+<td>int [required]</td>
+<td>User Tipsi id</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="productserializer">
+<h2>ProductSerializer<a class="headerlink" href="#productserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>order.serializers.ProductSerializer</em></p>
+<p>Filter field: <em>product_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>barcodes</td>
+<td>list[str] </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>count</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>datetime [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>discount_long_text</td>
+<td>str [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>discount_percent</td>
+<td>decimal [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>discount_short_text</td>
+<td>str [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>discount_type</td>
+<td>str [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>drink_id</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>inventory_id</td>
+<td>int [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>order</td>
+<td>int (related) [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>total_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>updated</td>
+<td>datetime [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>wine_id</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="ftsserializer">
+<h2>FTSSerializer<a class="headerlink" href="#ftsserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>api.serializers.FTSSerializer</em></p>
+<p>Filter field: <em>fts_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>drink</td>
+<td><a class="reference internal" href="#drinkdynserializer"><span class="std std-ref">DrinkDynSerializer</span></a> [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>rank</td>
+<td> float [ro]</td>
+<td>Similarity rank</td>
+</tr>
+<tr class="row-odd"><td>wine</td>
+<td><a class="reference internal" href="#winedynserializer"><span class="std std-ref">WineDynSerializer</span></a> [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="availabletobuyinventory">
+<h2>AvailableToBuyInventory<a class="headerlink" href="#availabletobuyinventory" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.AvailableToBuyInventory</em></p>
+<p>Filter field: <em>available_to_buy_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inventory_id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>store_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="countrydynserializer">
+<h2>CountryDynSerializer<a class="headerlink" href="#countrydynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.CountryDynSerializer</em></p>
+<p>Filter field: <em>country_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>image_url</td>
+<td>http-link [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="designationdynserializer">
+<h2>DesignationDynSerializer<a class="headerlink" href="#designationdynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.DesignationDynSerializer</em></p>
+<p>Filter field: <em>designation_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="drinkdynserializer">
+<h2>DrinkDynSerializer<a class="headerlink" href="#drinkdynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.DrinkDynSerializer</em></p>
+<p>Filter field: <em>drink_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>available_to_buy</td>
+<td><a class="reference internal" href="#availabletobuyinventory"><span class="std std-ref">list[AvailableToBuyInventory]</span></a> [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>avg_review</td>
+<td> dict(count=&lt;int&gt;, value=&lt;float&gt;) [ro]</td>
+<td>User ratings count and average value</td>
+</tr>
+<tr class="row-even"><td>country</td>
+<td><a class="reference internal" href="#countrydynserializer"><span class="std std-ref">CountryDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>drink_type</td>
+<td> str [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>label_url</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>producer</td>
+<td><a class="reference internal" href="#drinkproducerdynserializer"><span class="std std-ref">DrinkProducerDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>tag</td>
+<td><a class="reference internal" href="#drinktagdynserializer"><span class="std std-ref">DrinkTagDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>thumb_list_url</td>
+<td> url [ro]</td>
+<td>Thumbnail with size 256px on longest edge</td>
+</tr>
+<tr class="row-odd"><td>thumb_product_url</td>
+<td> url [ro]</td>
+<td>Thumbnail with size 380px on longest edge</td>
+</tr>
+<tr class="row-even"><td>user_favorite</td>
+<td><a class="reference internal" href="#userfavoritedynserializer"><span class="std std-ref">list[UserFavoriteDynSerializer]</span></a> [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>user_review</td>
+<td><a class="reference internal" href="#userreviewdynserializer"><span class="std std-ref">list[UserReviewDynSerializer]</span></a> [ro]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="drinkproducerdynserializer">
+<h2>DrinkProducerDynSerializer<a class="headerlink" href="#drinkproducerdynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.DrinkProducerDynSerializer</em></p>
+<p>Filter field: <em>producer_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="drinktagdynserializer">
+<h2>DrinkTagDynSerializer<a class="headerlink" href="#drinktagdynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.DrinkTagDynSerializer</em></p>
+<p>Filter field: <em>tag_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="regiondynserializer">
+<h2>RegionDynSerializer<a class="headerlink" href="#regiondynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.RegionDynSerializer</em></p>
+<p>Filter field: <em>region_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>image_url</td>
+<td>http-link [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="subregiondynserializer">
+<h2>SubRegionDynSerializer<a class="headerlink" href="#subregiondynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.SubRegionDynSerializer</em></p>
+<p>Filter field: <em>sub_region_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>image_url</td>
+<td>http-link [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="userfavoritedynserializer">
+<h2>UserFavoriteDynSerializer<a class="headerlink" href="#userfavoritedynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.UserFavoriteDynSerializer</em></p>
+<p>Filter field: <em>user_favorite_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>drink_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>group_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>user_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>wine_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="userreviewdynserializer">
+<h2>UserReviewDynSerializer<a class="headerlink" href="#userreviewdynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.UserReviewDynSerializer</em></p>
+<p>Filter field: <em>user_review_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>drink_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>group_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>location</td>
+<td> list [point=[x (longitude), y (latitude)]] </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>posted_at</td>
+<td>datetime [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>restaurant_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>text</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>user_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>int [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>wine_id</td>
+<td>int (related) [ro]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="varietaldynserializer">
+<h2>VarietalDynSerializer<a class="headerlink" href="#varietaldynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.VarietalDynSerializer</em></p>
+<p>Filter field: <em>varietal_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="vineyarddynserializer">
+<h2>VineyardDynSerializer<a class="headerlink" href="#vineyarddynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.VineyardDynSerializer</em></p>
+<p>Filter field: <em>vineyard_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="winedynserializer">
+<h2>WineDynSerializer<a class="headerlink" href="#winedynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.WineDynSerializer</em></p>
+<p>Filter field: <em>wine_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>available_to_buy</td>
+<td><a class="reference internal" href="#availabletobuyinventory"><span class="std std-ref">list[AvailableToBuyInventory]</span></a> [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>avg_review</td>
+<td> dict(count=&lt;int&gt;, value=&lt;float&gt;) [ro]</td>
+<td>User ratings count and average value</td>
+</tr>
+<tr class="row-even"><td>color</td>
+<td>str enum(None, 1, 2, 3, 4, 5, 6, 7) [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>country</td>
+<td><a class="reference internal" href="#countrydynserializer"><span class="std std-ref">CountryDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>designation</td>
+<td><a class="reference internal" href="#designationdynserializer"><span class="std std-ref">DesignationDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>food_scoring</td>
+<td> list [ro]</td>
+<td>Deprecated</td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>label_url</td>
+<td> url [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pro_rating</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>region</td>
+<td><a class="reference internal" href="#regiondynserializer"><span class="std std-ref">RegionDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>review_stats</td>
+<td> dict(avg_value: float, total_count: int) [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>style_scoring</td>
+<td> list [ro]</td>
+<td>Deprecated</td>
+</tr>
+<tr class="row-odd"><td>sub_regions</td>
+<td><blockquote class="first last">
+<div><p><a class="reference internal" href="#subregiondynserializer"><span class="std std-ref">list[SubRegionDynSerializer]</span></a></p>
+ [ro]</div></blockquote>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>thumb_list_url</td>
+<td> url [ro]</td>
+<td>Thumbnail with size 256px on longest edge</td>
+</tr>
+<tr class="row-odd"><td>thumb_product_url</td>
+<td> url [ro]</td>
+<td>Thumbnail with size 380px on longest edge</td>
+</tr>
+<tr class="row-even"><td>type</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: WineTypeField() DM: False &lt;class ‘core.serializers.WineTypeField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>user_favorite</td>
+<td><a class="reference internal" href="#userfavoritedynserializer"><span class="std std-ref">list[UserFavoriteDynSerializer]</span></a> [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>user_review</td>
+<td><a class="reference internal" href="#userreviewdynserializer"><span class="std std-ref">list[UserReviewDynSerializer]</span></a> [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>varietals</td>
+<td><blockquote class="first last">
+<div><p><a class="reference internal" href="#varietaldynserializer"><span class="std std-ref">list[VarietalDynSerializer]</span></a></p>
+ [ro]</div></blockquote>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>vineyard</td>
+<td><a class="reference internal" href="#vineyarddynserializer"><span class="std std-ref">VineyardDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>vintage</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: WineVintageField(help_text=’Wine vintage (`NV` for non-vintage)’) DM: False &lt;class ‘core.serializers.WineVintageField’&gt; [required]</td>
+<td>Wine vintage (`NV` for non-vintage)</td>
+</tr>
+<tr class="row-even"><td>vintage_note</td>
+<td> str [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>vintage_scoring</td>
+<td> list [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>wine_url</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>winemakers_note</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>winery</td>
+<td><a class="reference internal" href="#winerydynserializer"><span class="std std-ref">WineryDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="winerydynserializer">
+<h2>WineryDynSerializer<a class="headerlink" href="#winerydynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>core.serializers.WineryDynSerializer</em></p>
+<p>Filter field: <em>winery_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="baseretailinvupdateserializer">
+<h2>BaseRetailInvUpdateSerializer<a class="headerlink" href="#baseretailinvupdateserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>integration_api.serializers.BaseRetailInvUpdateSerializer</em></p>
+<p>Filter field: <em>any</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: BarcodesField() DM: False &lt;class ‘integration_api.serializers.BarcodesField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>str [writeonly]</td>
+<td>Should be: “wine” or “drink” to create correct tasks</td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pos_item_name</td>
+<td>str [writeonly]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField(read_only=True) DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retaildrinkcreateserializer">
+<h2>RetailDrinkCreateSerializer<a class="headerlink" href="#retaildrinkcreateserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>integration_api.serializers.RetailDrinkCreateSerializer</em></p>
+<p>Filter field: <em>any</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: BarcodesField() DM: False &lt;class ‘integration_api.serializers.BarcodesField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>str [writeonly]</td>
+<td>Should be: “wine” or “drink” to create correct tasks</td>
+</tr>
+<tr class="row-even"><td>drink_id</td>
+<td>int [writeonly]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>external_id</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pos_item_name</td>
+<td>str [writeonly]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField(read_only=True) DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retaildrinkdynserializer">
+<h2>RetailDrinkDynSerializer<a class="headerlink" href="#retaildrinkdynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>integration_api.serializers.RetailDrinkDynSerializer</em></p>
+<p>Filter field: <em>inventory_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>list[str] </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: ManyRelatedField(child_relation=PrimaryKeyRelatedField(read_only=True), read_only=True) DM: False &lt;class ‘rest_framework.relations.ManyRelatedField’&gt; [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>drink</td>
+<td><a class="reference internal" href="#drinkdynserializer"><span class="std std-ref">DrinkDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>external_id</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pos_item_name</td>
+<td> name [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField() DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retailinvextidbulkcreateserializer">
+<h2>RetailInvExtIdBulkCreateSerializer<a class="headerlink" href="#retailinvextidbulkcreateserializer" title="Permalink to this headline">¶</a></h2>
+<p>Same as ext id update serializer, but prohibit passing inventory id</p>
+<p>Class: <em>integration_api.serializers.RetailInvExtIdBulkCreateSerializer</em></p>
+<p>Filter field: <em>any</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: BarcodesField() DM: False &lt;class ‘integration_api.serializers.BarcodesField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>str [writeonly]</td>
+<td>Should be: “wine” or “drink” to create correct tasks</td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pos_item_name</td>
+<td>str [writeonly]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField() DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>store</td>
+<td>int (related) [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retailinvextidbulkupdateserializer">
+<h2>RetailInvExtIdBulkUpdateSerializer<a class="headerlink" href="#retailinvextidbulkupdateserializer" title="Permalink to this headline">¶</a></h2>
+<p>Same as retail inventory ext id update serializer, but prohibit passing inventory id</p>
+<p>Class: <em>integration_api.serializers.RetailInvExtIdBulkUpdateSerializer</em></p>
+<p>Filter field: <em>any</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: BarcodesField() DM: False &lt;class ‘integration_api.serializers.BarcodesField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>str [writeonly]</td>
+<td>Should be: “wine” or “drink” to create correct tasks</td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pos_item_name</td>
+<td>str [writeonly]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField(read_only=True) DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retailinvextidupdateserializer">
+<h2>RetailInvExtIdUpdateSerializer<a class="headerlink" href="#retailinvextidupdateserializer" title="Permalink to this headline">¶</a></h2>
+<p>Serializer which works through external id</p>
+<p>Class: <em>integration_api.serializers.RetailInvExtIdUpdateSerializer</em></p>
+<p>Filter field: <em>any</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: BarcodesField() DM: False &lt;class ‘integration_api.serializers.BarcodesField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>str [writeonly]</td>
+<td>Should be: “wine” or “drink” to create correct tasks</td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pos_item_name</td>
+<td>str [writeonly]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField(read_only=True) DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retailwinecreateserializer">
+<h2>RetailWineCreateSerializer<a class="headerlink" href="#retailwinecreateserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>integration_api.serializers.RetailWineCreateSerializer</em></p>
+<p>Filter field: <em>any</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: BarcodesField() DM: False &lt;class ‘integration_api.serializers.BarcodesField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>str [writeonly]</td>
+<td>Should be: “wine” or “drink” to create correct tasks</td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pos_item_name</td>
+<td>str [writeonly]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField(read_only=True) DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>wine_id</td>
+<td>int [writeonly]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retailwinedynserializer">
+<h2>RetailWineDynSerializer<a class="headerlink" href="#retailwinedynserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>integration_api.serializers.RetailWineDynSerializer</em></p>
+<p>Filter field: <em>inventory_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>list[str] </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: ManyRelatedField(child_relation=PrimaryKeyRelatedField(read_only=True), read_only=True) DM: False &lt;class ‘rest_framework.relations.ManyRelatedField’&gt; [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pos_item_name</td>
+<td> name [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>status</td>
+<td>FHELPER_TYPE_NOT_DESCRIBED_STUB: InventoryStatusField() DM: False &lt;class ‘core.serializers.InventoryStatusField’&gt; [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>sync_revision</td>
+<td>str [writeonly][null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>wine</td>
+<td><a class="reference internal" href="#winedynserializer"><span class="std std-ref">WineDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="inventoryserializer">
+<h2>InventorySerializer<a class="headerlink" href="#inventoryserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>retail.serializers.InventorySerializer</em></p>
+<p>Filter field: <em>inventory_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>abv</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>barcodes</td>
+<td>list[str] </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>batch_price</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>connoisseur_pick</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>datetime [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>drink</td>
+<td><a class="reference internal" href="#drinkdynserializer"><span class="std std-ref">DrinkDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>external_id</td>
+<td>str [required][null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>extra</td>
+<td>json/object </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>in_stock</td>
+<td>int [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>location</td>
+<td>list[(x:float, y:float), ..] [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>note</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>old_price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>on_sale</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>ordering</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>pack_size</td>
+<td>int </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>price</td>
+<td>decimal [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>proof</td>
+<td>float [null]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price</td>
+<td> float [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>special_price_amount</td>
+<td> int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>special_price_on</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>staff_pick</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>str enum(0, 4, 1, 2, 3, 5) </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>store</td>
+<td><code class="xref any docutils literal"><span class="pre">StoreSerializer</span></code> [required]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>unit_size</td>
+<td>str [null]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>updated</td>
+<td>datetime [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>value_pick</td>
+<td> bool [ro]</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>visible</td>
+<td>bool </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>wine</td>
+<td><a class="reference internal" href="#winedynserializer"><span class="std std-ref">WineDynSerializer</span></a> [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div class="section" id="retailgroupserializer">
+<h2>RetailGroupSerializer<a class="headerlink" href="#retailgroupserializer" title="Permalink to this headline">¶</a></h2>
+<p>Class: <em>retail.serializers.RetailGroupSerializer</em></p>
+<p>Filter field: <em>retail_group_fields</em></p>
+<p><div class="topic">
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="47%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">name</th>
+<th class="head">type</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>int [ro]</td>
+<td></td>
+</tr>
+<tr class="row-even"><td>internal_note</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>logo_url</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>str </td>
+<td></td>
+</tr>
+<tr class="row-odd"><td>shortcut</td>
+<td>str [required]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Structs</a><ul>
+<li><a class="reference internal" href="#storeserializerintegration">StoreSerializerIntegration</a></li>
+<li><a class="reference internal" href="#orderserializer">OrderSerializer</a></li>
+<li><a class="reference internal" href="#productserializer">ProductSerializer</a></li>
+<li><a class="reference internal" href="#ftsserializer">FTSSerializer</a></li>
+<li><a class="reference internal" href="#availabletobuyinventory">AvailableToBuyInventory</a></li>
+<li><a class="reference internal" href="#countrydynserializer">CountryDynSerializer</a></li>
+<li><a class="reference internal" href="#designationdynserializer">DesignationDynSerializer</a></li>
+<li><a class="reference internal" href="#drinkdynserializer">DrinkDynSerializer</a></li>
+<li><a class="reference internal" href="#drinkproducerdynserializer">DrinkProducerDynSerializer</a></li>
+<li><a class="reference internal" href="#drinktagdynserializer">DrinkTagDynSerializer</a></li>
+<li><a class="reference internal" href="#regiondynserializer">RegionDynSerializer</a></li>
+<li><a class="reference internal" href="#subregiondynserializer">SubRegionDynSerializer</a></li>
+<li><a class="reference internal" href="#userfavoritedynserializer">UserFavoriteDynSerializer</a></li>
+<li><a class="reference internal" href="#userreviewdynserializer">UserReviewDynSerializer</a></li>
+<li><a class="reference internal" href="#varietaldynserializer">VarietalDynSerializer</a></li>
+<li><a class="reference internal" href="#vineyarddynserializer">VineyardDynSerializer</a></li>
+<li><a class="reference internal" href="#winedynserializer">WineDynSerializer</a></li>
+<li><a class="reference internal" href="#winerydynserializer">WineryDynSerializer</a></li>
+<li><a class="reference internal" href="#baseretailinvupdateserializer">BaseRetailInvUpdateSerializer</a></li>
+<li><a class="reference internal" href="#retaildrinkcreateserializer">RetailDrinkCreateSerializer</a></li>
+<li><a class="reference internal" href="#retaildrinkdynserializer">RetailDrinkDynSerializer</a></li>
+<li><a class="reference internal" href="#retailinvextidbulkcreateserializer">RetailInvExtIdBulkCreateSerializer</a></li>
+<li><a class="reference internal" href="#retailinvextidbulkupdateserializer">RetailInvExtIdBulkUpdateSerializer</a></li>
+<li><a class="reference internal" href="#retailinvextidupdateserializer">RetailInvExtIdUpdateSerializer</a></li>
+<li><a class="reference internal" href="#retailwinecreateserializer">RetailWineCreateSerializer</a></li>
+<li><a class="reference internal" href="#retailwinedynserializer">RetailWineDynSerializer</a></li>
+<li><a class="reference internal" href="#inventoryserializer">InventorySerializer</a></li>
+<li><a class="reference internal" href="#retailgroupserializer">RetailGroupSerializer</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="endpoints.html"
+                        title="previous chapter">Endpoints</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dyn_serializers.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="endpoints.html" title="Endpoints"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tipsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

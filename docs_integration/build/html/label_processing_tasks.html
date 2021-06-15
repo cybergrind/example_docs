@@ -1,0 +1,162 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Label Processing Tasks Guide &#8212; Tipsi 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/custom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="For API clients" href="api_examples.html" />
+    <link rel="prev" title="POS synchronization" href="pos_sync.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="api_examples.html" title="For API clients"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pos_sync.html" title="POS synchronization"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="label-processing-tasks-guide">
+<h1>Label Processing Tasks Guide<a class="headerlink" href="#label-processing-tasks-guide" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To create tasks via integration API you should have this option enabled by Tipsi team.
+Please contact support if API doesn’t work for you</p>
+</div>
+<p>Label processing tasks is a way to match products manually by Tipsi team. It requires product
+front label picture and optionally back label, for wines it’s also recommended to send vintage.
+If vintage is not send and there is no vintage on wine label, the most recent vintage will be used
+by default.</p>
+<p>Label processing tasks are created in 3 steps:</p>
+<ol class="arabic simple">
+<li>Create inventory <a class="reference internal" href="endpoints.html#endpoints-store-products-create"><span class="std std-ref">/api/rest/v001/store/&lt;store_id&gt;/{wine,drink} - Create store wine/drink</span></a> or use the existing one. Tasks creation is only allowed for items in unmatched state.</li>
+<li>Upload image (or images)</li>
+<li>Create label tasks</li>
+</ol>
+<div class="section" id="upload-image">
+<h2>Upload image<a class="headerlink" href="#upload-image" title="Permalink to this headline">¶</a></h2>
+<p>Perform POST request to <cite>/api/rest/v001/store/STORE_ID/image_upload</cite> to upload image. The returned
+image URL will be used in <cite>create tasks</cite> API.</p>
+<p>Upload image to Tipsi server. The endpoint will return image URL, which can be used later for
+label tasks creation.</p>
+<img alt="_images/store_image_upload.png" src="_images/store_image_upload.png" />
+<p>See <a class="reference internal" href="endpoints.html#endpoints-upload-image"><span class="std std-ref">/api/rest/v001/store/&lt;store_id&gt;/image_upload - Upload image</span></a></p>
+</div>
+<div class="section" id="create-task-for-unmatched-inventory-item">
+<h2>Create task for unmatched inventory item<a class="headerlink" href="#create-task-for-unmatched-inventory-item" title="Permalink to this headline">¶</a></h2>
+<p>You can create task by sending POST to <cite>/api/rest/v001/store/STORE_ID/wine/INVENTORY_ID/create_task</cite>
+or <cite>/api/rest/v001/store/STORE_ID/drink/INVENTORY_ID/create_task</cite>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">INVENTORY_ID is Tipsi id, it’s returned once a new inventory created on POST to /wine or /drink</p>
+</div>
+<p>Create product label processing tasks, those tasks will be processed by Tipsi team. Once label
+uploaded, it’s possible to track its status by checking “status” field of inventory struct.</p>
+<img alt="_images/create_wine_task.png" src="_images/create_wine_task.png" />
+<p>See <a class="reference internal" href="endpoints.html#endpoints-create-task"><span class="std std-ref">api/rest/v001/store/&lt;store_id&gt;/{wine,drink}/&lt;wine_inventory_id&gt;/create_task - Create task</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Label Processing Tasks Guide</a><ul>
+<li><a class="reference internal" href="#upload-image">Upload image</a></li>
+<li><a class="reference internal" href="#create-task-for-unmatched-inventory-item">Create task for unmatched inventory item</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pos_sync.html"
+                        title="previous chapter">POS synchronization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_examples.html"
+                        title="next chapter">For API clients</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/label_processing_tasks.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="api_examples.html" title="For API clients"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pos_sync.html" title="POS synchronization"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tipsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

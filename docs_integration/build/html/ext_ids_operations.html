@@ -1,0 +1,154 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Access products using external ids &#8212; Tipsi 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/custom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Full text search across Tipsi database" href="full_text_search.html" />
+    <link rel="prev" title="List or create operations" href="list_or_create_operations.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="full_text_search.html" title="Full text search across Tipsi database"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="list_or_create_operations.html" title="List or create operations"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="access-products-using-external-ids">
+<h1>Access products using external ids<a class="headerlink" href="#access-products-using-external-ids" title="Permalink to this headline">¶</a></h1>
+<p>Using external id is convenient, when you have existing list of products and want to sync them to
+Tipsi, and later retrieve processed data back to your system. Fetching, updating and deleting
+product will use same product URL, only methods will differ:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">integration</span><span class="o">-</span><span class="n">test</span><span class="o">.</span><span class="n">gettipsi</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">v001</span><span class="o">/</span><span class="n">store</span><span class="o">/</span><span class="n">STORE_ID</span><span class="o">/</span><span class="n">ext</span><span class="o">/</span><span class="n">EXTERNAL_ID</span>
+</pre></div>
+</div>
+<div class="section" id="fetch-product">
+<h2>Fetch product<a class="headerlink" href="#fetch-product" title="Permalink to this headline">¶</a></h2>
+<p>Perform GET request to product URL <a class="reference external" href="https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/ext/EXTERNAL_ID">https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/ext/EXTERNAL_ID</a></p>
+<img alt="_images/ext_id_fetch.png" src="_images/ext_id_fetch.png" />
+</div>
+<div class="section" id="update-product-meta">
+<h2>Update product meta<a class="headerlink" href="#update-product-meta" title="Permalink to this headline">¶</a></h2>
+<p>Perform PATCH request to product URL <a class="reference external" href="https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/ext/EXTERNAL_ID">https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/ext/EXTERNAL_ID</a>
+Only passed parameters will be modified, as conventionally PATCH performs partial updates, omitted
+parameters will remain unchanged. Please take into account that it will change only inventory level
+fields (in_stock, price and etc), all nested wine or drink attributes will remain unchanged even
+if you try to change them. Params should be formatted as JSON.</p>
+<p>Please see <a class="reference internal" href="dyn_serializers.html#retailinvextidupdateserializer"><span class="std std-ref">RetailInvExtIdUpdateSerializer</span></a></p>
+<img alt="_images/ext_id_update.png" src="_images/ext_id_update.png" />
+</div>
+<div class="section" id="delete-product">
+<h2>Delete product<a class="headerlink" href="#delete-product" title="Permalink to this headline">¶</a></h2>
+<p>Perform DELETE request to product URL <a class="reference external" href="https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/ext/EXTERNAL_ID">https://integration-test.gettipsi.com/api/rest/v001/store/STORE_ID/ext/EXTERNAL_ID</a></p>
+<img alt="_images/ext_id_delete.png" src="_images/ext_id_delete.png" />
+<p>For successful deletion 204 “No Content” HTTP status expected.</p>
+<p>See <a class="reference internal" href="endpoints.html#endpoints-ext-id-operations"><span class="std std-ref">External id operations</span></a> for more details.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Access products using external ids</a><ul>
+<li><a class="reference internal" href="#fetch-product">Fetch product</a></li>
+<li><a class="reference internal" href="#update-product-meta">Update product meta</a></li>
+<li><a class="reference internal" href="#delete-product">Delete product</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="list_or_create_operations.html"
+                        title="previous chapter">List or create operations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="full_text_search.html"
+                        title="next chapter">Full text search across Tipsi database</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ext_ids_operations.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="full_text_search.html" title="Full text search across Tipsi database"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="list_or_create_operations.html" title="List or create operations"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Tipsi 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tipsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
